@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "542698181820",
+    "project_id": "incampusdiary-a13c5",
+    "storage_bucket": "incampusdiary-a13c5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:542698181820:android:9bec5fc372bec321b32cb9",
+        "android_client_info": {
+          "package_name": "com.example.incampusdiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "542698181820-g0vlldf46a0btrhrdkl90po18a1m776h.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.incampusdiary",
+            "certificate_hash": "b5691995e1d7a975f4f59bab0a5e56c44a4f6802"
+          }
+        },
+        {
+          "client_id": "542698181820-amh2mi2oaqvdtto66l40srkra5t8mfui.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBCUNAghNOPCRFLmtPsp3znBsQFUxZAOu4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "542698181820-amh2mi2oaqvdtto66l40srkra5t8mfui.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

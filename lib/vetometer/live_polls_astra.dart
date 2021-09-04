@@ -1,11 +1,9 @@
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fluttertoast/fluttertoast.dart';
-import 'package:incampusdiary/models/vetometer/add_poll_model.dart';
 import 'package:incampusdiary/models/vetometer/vetometer_background.dart';
 import 'package:incampusdiary/models/vetometer/poll_options_data.dart';
 import 'add_poll_astra.dart';

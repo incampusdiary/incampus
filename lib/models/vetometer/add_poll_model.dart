@@ -5,6 +5,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:incampusdiary/models/vetometer/poll_model.dart';
 import 'package:incampusdiary/vetometer/add_poll_astra.dart';
 
+import '../../constants.dart';
+
 class AddPollModel extends ChangeNotifier {
 
   List optionsList = [];
@@ -129,7 +131,3 @@ class AddPollModel extends ChangeNotifier {
     );
   }
 }
-
-var kContainerElevation = [
-  BoxShadow(color: Colors.black38, offset: Offset(10, 10), blurRadius: 10)
-];

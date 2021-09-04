@@ -5,12 +5,14 @@ class RoundedButton extends StatelessWidget {
   final String title;
   final Function onPressed;
   final double borderRadius, height, minWidth;
+  final double elevation;
 
   RoundedButton(
       {this.color = Colors.indigoAccent,
       this.borderRadius = 15,
       this.height = 50,
       this.minWidth = double.infinity,
+      this.elevation = 20,
       @required this.title,
       @required this.onPressed});
 
@@ -19,7 +21,7 @@ class RoundedButton extends StatelessWidget {
     return Material(
       color: color,
       borderRadius: BorderRadius.circular(borderRadius),
-      elevation: 20.0,
+      elevation: elevation,
       child: MaterialButton(
         padding: EdgeInsets.all(0.0),
         onPressed: onPressed,

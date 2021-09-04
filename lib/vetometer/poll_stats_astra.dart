@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:incampusdiary/models/vetometer/add_poll_model.dart';
 import 'package:incampusdiary/models/vetometer/vetometer_background.dart';
 import 'package:incampusdiary/rounded_button.dart';
+import '../constants.dart';
 import 'live_polls_astra.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
-import 'package:incampusdiary/constants.dart';
 
 class VetometerPollStats extends StatelessWidget {
   static const id = "vetometer_poll_stats";

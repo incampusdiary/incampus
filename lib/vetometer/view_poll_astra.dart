@@ -111,7 +111,7 @@ class _VetometerViewPollState extends State<VetometerViewPoll> {
               decoration: BoxDecoration(
                   color: Colors.white.withOpacity(0.8),
                   borderRadius: BorderRadius.circular(5),
-                  ),
+                  boxShadow: kContainerElevation),
               child: Padding(
                 padding: EdgeInsets.all(32.0),
                 child: Column(
@@ -315,7 +315,7 @@ class ViewPollOptions extends StatelessWidget {
                       ? Colors.lightGreenAccent.shade700.withOpacity(0.65)
                       : Colors.white.withOpacity(0.8),
                   borderRadius: BorderRadius.circular(5),
-                  ),
+                  boxShadow: kContainerElevation),
               margin: EdgeInsets.only(top: 16.0),
               padding: EdgeInsets.only(
                   left: 16.0, right: 16.0, top: 16.0, bottom: 16.0),

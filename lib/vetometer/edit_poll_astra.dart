@@ -234,7 +234,7 @@ class _VetometerEditPollState extends State<VetometerEditPoll> {
                             decoration: BoxDecoration(
                               color: Colors.white,
                               shape: BoxShape.rectangle,
-                              // boxShadow: kContainerElevation,
+                              boxShadow: kContainerElevation,
                             ),
                             child: Center(
                               child: Text(
@@ -542,7 +542,7 @@ class PollTextFormField extends StatelessWidget {
           vertical: verticalPadding, horizontal: horizontalPadding),
       child: Container(
         width: width,
-        // decoration: BoxDecoration(boxShadow: kContainerElevation),
+        decoration: BoxDecoration(boxShadow: kContainerElevation),
         child: TextFormField(
           autocorrect: false,
           textCapitalization: textCapitalization,

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:incampusdiary/models/vetometer/add_poll_model.dart';
 import 'package:incampusdiary/models/vetometer/vetometer_background.dart';
 import 'package:incampusdiary/rounded_button.dart';
 import 'live_polls_astra.dart';
@@ -37,6 +38,7 @@ class VetometerPollStats extends StatelessWidget {
               decoration: BoxDecoration(
                 color: Colors.white.withOpacity(0.9),
                 borderRadius: BorderRadius.circular(5),
+                boxShadow: kContainerElevation,
               ),
               child: Center(
                 child: Padding(

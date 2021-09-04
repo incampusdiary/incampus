@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:incampusdiary/models/vetometer/add_poll_model.dart';
 import 'package:incampusdiary/models/vetometer/vetometer_background.dart';
 import 'package:incampusdiary/models/vetometer/poll_options_data.dart';
 import 'add_poll_astra.dart';
@@ -93,6 +94,7 @@ class _VetometerLivePollsState extends State<VetometerLivePolls> {
                               decoration: BoxDecoration(
                                 color: Color(0xFF6FB1FC),
                                 borderRadius: BorderRadius.circular(15.0),
+                                boxShadow: kContainerElevation,
                               ),
                               width: double.infinity,
                               child: Row(
@@ -138,7 +140,8 @@ class _VetometerLivePollsState extends State<VetometerLivePolls> {
                                               decoration: BoxDecoration(
                                                   color: Colors.red,
                                                   shape: BoxShape.circle,
-                                              ),
+                                                  boxShadow:
+                                                      kContainerElevation),
                                             ),
                                           );
                                   }),
@@ -450,14 +453,6 @@ class _VetometerLivePollsState extends State<VetometerLivePolls> {
         });
   }
 
-  ///Fetches the poll document from firestore corresponding to the id present in the link
-  getLinkedPollFromDb() async {
-    //Todo: Initialize documentId
-    var documentId;
-    var document;
-    initializeSelectedPollOption(document, documentId);
-  }
-
   /*  Navigates to AddPoll Screen  */
   Widget customFloatingActionButton() {
     return Align(
@@ -468,6 +463,7 @@ class _VetometerLivePollsState extends State<VetometerLivePolls> {
           child: Container(
             decoration: BoxDecoration(
               shape: BoxShape.circle,
+              boxShadow: kContainerElevation,
             ),
             child: Image.asset(
               'images/button.png',

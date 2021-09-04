@@ -411,12 +411,7 @@ class _VetometerAddPollState extends State<VetometerAddPoll> {
                         print(_pollModel.accessibility);
                         print(_pollModel.password);
                         print(_pollModel.responseLimit);
-                        _pollModel.userId =
-                            FirebaseAuth.instance.currentUser.uid;
-                        // await firestore
-                        //     .collection('polls')
-                        //     .doc()
-                        //     .set(_pollModel.toMap());
+                        _pollModel.userId = FirebaseAuth.instance.currentUser.uid;
                         addPollToDB();
                         Navigator.pop(context);
                         dispose();

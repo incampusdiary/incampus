@@ -12,8 +12,6 @@ class AddPollModel extends ChangeNotifier {
   int responseLimit = 1;
   bool _privacy = false;
 
-  //Todo: Add expiry date field and UI
-
   bool get privacy => _privacy;
   set privacy(value) {
     _privacy = value;
@@ -95,10 +93,7 @@ class AddPollModel extends ChangeNotifier {
       child: Row(
         children: [
           Expanded(
-            //Todo: Change the name of PollTextFormField
             child: PollTextFormField(
-              //Todo: Change initial value or make a separate item for first n items
-              // initialValue: document or pollmodel??,
               verticalPadding: 8,
               hint: null,
               onChanged: (value) {},

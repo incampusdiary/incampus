@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:incampusdiary/screens/home_screen.dart';
@@ -31,6 +32,9 @@ Future<void> main() async {
   runApp(MyApp());
 }
 
+var brightness = SchedulerBinding.instance.window.platformBrightness;
+bool darkModeOn = brightness == Brightness.dark;
+
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -49,9 +53,11 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: HomeScreen.id,
         routes: {
+
           HomeScreen.id: (context) => HomeScreen(),
           LoginScreen.id: (context) => LoginScreen(),
           SignUp.id: (context) => SignUp(),
+
           VetometerScreen.id: (context) => VetometerScreen(),
           VetometerViewPoll.id: (context) => VetometerViewPoll(),
           VetometerLivePolls.id: (context) => VetometerLivePolls(),

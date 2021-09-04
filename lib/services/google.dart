@@ -11,7 +11,6 @@ String email;
 String imageUrl;
 
 Future<String> signInWithGoogle() async {
-
   final GoogleSignInAccount googleSignInAccount = await googleSignIn.signIn();
   if (googleSignInAccount == null) {
     Fluttertoast.showToast(
@@ -21,7 +20,7 @@ Future<String> signInWithGoogle() async {
     return null;
   } else {
     final GoogleSignInAuthentication googleSignInAuthentication =
-        await googleSignInAccount.authentication;
+    await googleSignInAccount.authentication;
 
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleSignInAuthentication.accessToken,
@@ -29,7 +28,7 @@ Future<String> signInWithGoogle() async {
     );
 
     final UserCredential authResult =
-        await _auth.signInWithCredential(credential);
+    await _auth.signInWithCredential(credential);
     final User user = authResult.user;
 
     name = user.displayName;
@@ -69,29 +68,6 @@ Future<String> signInWithGoogle() async {
     return '$user';
   }
 }
-// Future signInWithGoogle() async {
-//   print("'Sign In started'");
-//   final user = await _googleSignIn.signIn();
-//   print("'user email'");
-//   print(user.toString());
-//   if (user == null)
-//     print("PRINTED: No user Found");
-//   else {
-//     final googleAuth = await user.authentication;
-//     final credential = GoogleAuthProvider.credential(
-//       accessToken: googleAuth.accessToken,
-//       idToken: googleAuth.idToken,
-//     );
-//     await _firebaseAuth.signInWithCredential(credential);
-//     // _googleSignIn.disconnect(); // This gives an option to choose a new google account every time.
-//     showSnackBar("Signed In");
-//     print(credential.toString());
-//     name = user.displayName;
-//     email = user.email;
-//     photoUrl = user.photoUrl;
-//     Navigator.pushNamed(context, WelcomeScreen.id);
-//   }
-// }
 
 Future<void> signOutGoogle() async {
   await FirebaseAuth.instance.signOut();

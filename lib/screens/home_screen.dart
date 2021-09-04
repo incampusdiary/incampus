@@ -49,8 +49,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-//Todo: Check whether the user is already signed in or not in init().
-// FirebaseUser currentUser = mAuth.getCurrentUser();
-// if(currentUser != null)
-//    updateUI()

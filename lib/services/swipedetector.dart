@@ -6,9 +6,6 @@ class SwipeDetector extends StatelessWidget {
   final Function onLongPress;
   final Function onSwipeUp;
   final Function onSwipeDown;
-  // final Function onHorizontalDragDown;
-  // final Function onHorizontalDragEnd;
-  // final Function onHorizontalDragUpdate;
 
   SwipeDetector({
     this.child,
@@ -16,9 +13,6 @@ class SwipeDetector extends StatelessWidget {
     this.onLongPress,
     this.onSwipeUp,
     this.onSwipeDown,
-    // this.onHorizontalDragEnd,
-    // this.onHorizontalDragUpdate,
-    // this.onHorizontalDragDown,
   });
 
   @override
@@ -50,25 +44,6 @@ class SwipeDetector extends StatelessWidget {
         print("Long Press");
         onLongPress?.call();
       },
-      // onHorizontalDragEnd: onHorizontalDragEnd,
-      // onHorizontalDragUpdate: onHorizontalDragUpdate,
-      // onHorizontalDragDown: onHorizontalDragDown,
-      // onHorizontalDragEnd: (details) {
-      //   print('Horizontal: ${details.velocity}');
-      //   double dy = details.velocity.pixelsPerSecond.dy.abs();
-      //   double dx = details.primaryVelocity;
-      //   if (dx > 100) {
-      //     if (dy > 20 || dx > 300) {
-      //       print("Swiped Right");
-      //       onSwipeRight?.call();
-      //     }
-      //   } else if (-dx > 100) {
-      //     if (dy > 20 || -dx > 300) {
-      //       print("Swiped Left $dy");
-      //       onSwipeLeft?.call();
-      //     }
-      //   }
-      // },
     );
   }
 }

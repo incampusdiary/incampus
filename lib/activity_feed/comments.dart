@@ -11,7 +11,7 @@ import 'package:incampusdiary/models/news_feed/post_model.dart';
 import 'package:liquid_progress_indicator/liquid_progress_indicator.dart';
 import 'package:uuid/uuid.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import 'news_feed.dart';
+import 'news_feed_astra.dart';
 
 class Comments extends StatefulWidget {
   @override
@@ -315,17 +315,6 @@ class _CommentsState extends State<Comments> {
     });
     print('Deleted Array: $deletedComments \n ${deletedComments.last}');
     hasCommentsBeenDeleted = true;
-    // try {
-    //   print('Deleting $deletedComment');
-    //   firestore.collection('posts').doc(post.postId).set(
-    //     {
-    //       'comments': FieldValue.arrayRemove([deletedComment]),
-    //     },
-    //     SetOptions(merge: true),
-    //   );
-    // } catch (e) {
-    //   print('Error Occured: $e');
-    // }
   }
 
   handlingEditCommentInitiation(comment) {
@@ -381,52 +370,6 @@ class _CommentsState extends State<Comments> {
     commentController.clear();
     isEditingCommentInProgress = false;
   }
-
-  // showDialogue() {
-  //   return AlertDialog(
-  //     backgroundColor: Colors.white,
-  //     title: Text(
-  //       'Confirm',
-  //       style: kTitleTextStyle,
-  //     ),
-  //     content: Text(
-  //       'This message will be permanently deleted.\n\nAre you sure?',
-  //       style: TextStyle(fontSize: 18, color: Colors.deepPurple),
-  //     ),
-  //     contentPadding: EdgeInsets.only(top: 12, left: 24, right: 20, bottom: 0),
-  //     actions: [
-  //       TextButton(
-  //           style: TextButton.styleFrom(
-  //             elevation: 15,
-  //             backgroundColor: Colors.deepPurple.withOpacity(0.6),
-  //           ),
-  //           onPressed: () {
-  //             Navigator.pop(context, true);
-  //           },
-  //           child: Text(
-  //             'Yes',
-  //             style: TextStyle(
-  //                 fontSize: 22, color: Colors.red, fontWeight: FontWeight.w900),
-  //           )),
-  //       SizedBox(width: 10),
-  //       TextButton(
-  //           style: TextButton.styleFrom(
-  //             elevation: 15,
-  //             backgroundColor: Colors.deepPurple.withOpacity(0.6),
-  //           ),
-  //           onPressed: () {
-  //             Navigator.pop(context, false);
-  //           },
-  //           child: Text(
-  //             'No',
-  //             style: TextStyle(
-  //                 fontSize: 22,
-  //                 color: Colors.blue,
-  //                 fontWeight: FontWeight.w900),
-  //           )),
-  //     ],
-  //   );
-  // }
 
   Widget slideRightBackground() {
     return Container(
@@ -1061,52 +1004,6 @@ class _CommentListState extends State<CommentList> with WidgetsBindingObserver {
     }
   }
 
-  // showDialogue() {
-  //   return AlertDialog(
-  //     backgroundColor: Colors.white,
-  //     title: Text(
-  //       'Confirm',
-  //       style: kTitleTextStyle,
-  //     ),
-  //     content: Text(
-  //       'This message will be permanently deleted.\n\nAre you sure?',
-  //       style: TextStyle(fontSize: 18, color: Colors.deepPurple),
-  //     ),
-  //     contentPadding: EdgeInsets.only(top: 12, left: 24, right: 20, bottom: 0),
-  //     actions: [
-  //       TextButton(
-  //           style: TextButton.styleFrom(
-  //             elevation: 15,
-  //             backgroundColor: Colors.deepPurple.withOpacity(0.6),
-  //           ),
-  //           onPressed: () {
-  //             Navigator.pop(context, true);
-  //           },
-  //           child: Text(
-  //             'Yes',
-  //             style: TextStyle(
-  //                 fontSize: 22, color: Colors.red, fontWeight: FontWeight.w900),
-  //           )),
-  //       SizedBox(width: 10),
-  //       TextButton(
-  //           style: TextButton.styleFrom(
-  //             elevation: 15,
-  //             backgroundColor: Colors.deepPurple.withOpacity(0.6),
-  //           ),
-  //           onPressed: () {
-  //             Navigator.pop(context, false);
-  //           },
-  //           child: Text(
-  //             'No',
-  //             style: TextStyle(
-  //                 fontSize: 22,
-  //                 color: Colors.blue,
-  //                 fontWeight: FontWeight.w900),
-  //           )),
-  //     ],
-  //   );
-  // }
-
   static String timeAgoSinceDate(String dateString,
       {bool numericDates = true}) {
     DateTime date = DateTime.parse(dateString);
@@ -1293,14 +1190,6 @@ class CommentDesign extends CustomClipper<Path> {
     path.lineTo(20.0, 0.0);
     path.quadraticBezierTo(0.0, 0.0, 0.0, 20.0);
     return path;
-    // var path = Path();
-    // path.lineTo(10, 0);
-    // path.quadraticBezierTo(-5, 0, 10, 10);
-    // path.lineTo(10, 20);
-    // path.lineTo(10, size.height - 20);
-    // path.quadraticBezierTo(0.0, size.height, 20.0, size.height);
-    //
-    // path.close();
   }
 
   @override
@@ -1308,5 +1197,3 @@ class CommentDesign extends CustomClipper<Path> {
     return true;
   }
 }
-
-//Todo: Add  a condition: if(currentUser.uid == '$idOfInCampus') edition & delete all comments and replies.

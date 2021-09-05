@@ -249,33 +249,6 @@ class _VetometerEditPollState extends State<VetometerEditPoll> {
                           ),
                         ),
                         SizedBox(width: 10),
-                        // Container(
-                        //   width: 40,
-                        //   height: 40,
-                        //   decoration: BoxDecoration(
-                        //     color: Colors.indigoAccent,
-                        //     boxShadow: kContainerElevation,
-                        //   ),
-                        //   child: IconButton(
-                        //     icon: Icon(
-                        //       Icons.add_circle_outline,
-                        //       color: Colors.white,
-                        //       size: 24,
-                        //     ),
-                        //     onPressed: () {
-                        //       print('Print: Increment');
-                        //       var responseLimit =
-                        //           providerFalse.responseLimit;
-                        //       var pollOptionsCount =
-                        //           providerFalse.pollOptionsCountValue;
-                        //       if (responseLimit < pollOptionsCount - 1)
-                        //         providerFalse.responseLimitIncrement();
-                        //       else
-                        //         showSnackBar(
-                        //             'You have only $pollOptionsCount options!');
-                        //     },
-                        //   ),
-                        // ),
                         SizedBox(width: 10),
                         // Container(
                         //   width: 40,
@@ -336,27 +309,14 @@ class _VetometerEditPollState extends State<VetometerEditPoll> {
                       title: 'Delete Poll',
                       onPressed: () async {
                         try {
-                          // await firestore
-                          //     .collection('polls')
-                          //     .doc(document.id)
-                          //     .delete();
-                          // await firestore
-                          //     .collection('userPoll')
-                          //     .doc(currentUserId)
-                          //     .collection('pollId')
-                          //     .doc(document.id)
-                          //     .delete();
                           deletePollFromPolls(documentId);
                           deleteUserResponseFromUserPoll(documentId);
                           deleteVotesFromPollCounters(documentId);
                         } catch (e) {
                           print('Exception occured during deletion: $e');
                         }
-                        // Navigator.popUntil(
-                        //     context, ModalRoute.withName(VetometerLivePolls.id));
                         Navigator.pop(context);
                         Navigator.pop(context, documentId);
-                        // Navigator.popAndPushNamed(context, VetometerLivePolls.id);
                       },
                       color: Colors.redAccent,
                     ),

@@ -16,7 +16,7 @@ import 'package:uuid/uuid.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'article_viewer.dart';
 import 'comments.dart';
-import 'news_feed.dart';
+import 'news_feed_astra.dart';
 
 class ArticleEditor extends StatefulWidget {
   static final id = 'article-editor';

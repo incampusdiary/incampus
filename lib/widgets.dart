@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:incampusdiary/vetometer/vetometer_screen_astra.dart';
 import 'package:flutter/material.dart';
-import 'screens/login.dart';
+import 'screens/login_astra.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 Widget logoTitle(String text, double size) {

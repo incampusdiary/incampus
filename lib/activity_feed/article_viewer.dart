@@ -11,7 +11,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../main.dart';
 import 'article_editor.dart';
 import 'comments.dart';
-import 'news_feed.dart';
+import 'news_feed_astra.dart';
 
 class ArticleViewer extends StatefulWidget {
   static final id = 'article-viewer';

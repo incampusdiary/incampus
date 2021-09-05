@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:incampusdiary/models/vetometer/vetometer_background.dart';
-import 'package:incampusdiary/screens/login.dart';
+import 'package:incampusdiary/screens/login_astra.dart';
 import 'live_polls_astra.dart';
 import 'package:incampusdiary/widgets.dart';
 import 'dart:async';

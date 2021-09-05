@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:incampusdiary/vetometer/vetometer_screen_astra.dart';
-import 'login.dart';
+import 'login_astra.dart';
 import '../widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/cupertino.dart';
-import 'package:incampusdiary/activity_feed/news_feed.dart';
+import 'package:incampusdiary/activity_feed/news_feed_astra.dart';
 
 class NewsFeedData extends ChangeNotifier {
   bool _speedDialVisibility = true;

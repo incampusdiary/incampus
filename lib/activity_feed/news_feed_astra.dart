@@ -1,4 +1,6 @@
 import 'dart:collection';
+import 'dart:convert';
+import 'dart:io';
 import 'dart:math';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:collection/collection.dart';
@@ -6,25 +8,36 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:incampusdiary/activity_feed/post_description.dart';
 import 'package:incampusdiary/activity_feed/profile.dart';
+import 'package:incampusdiary/models/news_feed/news_feed_data_model.dart';
 import 'package:incampusdiary/models/news_feed/postCardWidget.dart';
 import 'package:incampusdiary/models/news_feed/swiping_position_provider.dart';
-import 'package:incampusdiary/screens/home_screen.dart';
+import 'package:incampusdiary/screens/home_screen_astra.dart';
 import 'package:incampusdiary/services/swipedetector.dart';
 import 'package:incampusdiary/tcard/cards.dart';
 import 'package:incampusdiary/tcard/controller.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:incampusdiary/activity_feed/upload.dart';
 import 'package:incampusdiary/models/news_feed/post_model.dart';
-import '../models/news_feed/news_feed_data_model.dart';
 import 'package:provider/provider.dart';
 import 'package:simple_speed_dial/simple_speed_dial.dart';
 import 'package:http/http.dart' as http;
 import 'package:path/path.dart' as path;
 import 'package:path_provider/path_provider.dart' as pathProvider;
+
 import 'comments.dart';
 import 'news_feed_home.dart';
+
+final String ASTRA_DB_ID = dotenv.get('ASTRA_DB_ID');
+final String ASTRA_DB_REGION = dotenv.get('ASTRA_DB_REGION');
+final String ASTRA_DB_KEYSPACE = dotenv.get('ASTRA_DB_KEYSPACE');
+final String ASTRA_DB_APPLICATION_TOKEN =
+    dotenv.get('ASTRA_DB_APPLICATION_TOKEN');
+
+String get headerUrl =>
+    'https://$ASTRA_DB_ID-$ASTRA_DB_REGION.apps.astra.datastax.com/api/rest/v2/namespaces/$ASTRA_DB_KEYSPACE/collections';
 
 class NewsFeed extends StatefulWidget {
   static final id = "news_feed";
@@ -442,16 +455,10 @@ addMoreData(swipeDirection) {
   if (!alreadyVisitedPosts.containsKey(post.postId)) {
     try {
       if (swipeDirection == SwipingDirection.left) {
-        database
-            .child('likes')
-            .child(post.postId)
-            .set(ServerValue.increment(1));
+        updateLikeCounter(post.postId);
         alreadyVisitedPosts[post.postId] = true;
       } else {
-        database
-            .child('dislikes')
-            .child(post.postId)
-            .set(ServerValue.increment(1));
+        updateDislikeCounter(post.postId);
         alreadyVisitedPosts[post.postId] = false;
       }
     } catch (e) {
@@ -463,11 +470,74 @@ addMoreData(swipeDirection) {
   nextPage();
 }
 
-updateSavedPosts() {
-  firestore
-      .collection('userInfo')
-      .doc(currentUser.uid)
-      .set({'savedPosts': savedPosts});
+Future<void> updateDislikeCounter(String postid) async {
+  final url =
+      'https://$ASTRA_DB_ID-$ASTRA_DB_REGION.apps.astra.datastax.com/api/rest/v2/keyspaces/$ASTRA_DB_KEYSPACE/dislikes/$postid';
+  try {
+    final response = await http.put(
+      Uri.parse(url),
+      headers: {
+        "X-Cassandra-Token": "$ASTRA_DB_APPLICATION_TOKEN",
+        "Content-Type": "application/json",
+      },
+      body: json.encode({"dislikes": "+1"}),
+    );
+    print("Counter Updated");
+    print(json.decode(response.body));
+    final responseData = json.decode(response.body);
+    if (responseData['error'] != null) {
+      throw HttpException(responseData['error']['message']);
+    }
+  } catch (error) {
+    print(error);
+  }
+}
+
+Future<void> updateLikeCounter(String postid) async {
+  final url =
+      'https://$ASTRA_DB_ID-$ASTRA_DB_REGION.apps.astra.datastax.com/api/rest/v2/keyspaces/$ASTRA_DB_KEYSPACE/likes/$postid';
+  try {
+    final response = await http.put(
+      Uri.parse(url),
+      headers: {
+        "X-Cassandra-Token": "$ASTRA_DB_APPLICATION_TOKEN",
+        "Content-Type": "application/json",
+      },
+      body: json.encode({"likes": "+1"}),
+    );
+    print("Counter Updated");
+    print(json.decode(response.body));
+    final responseData = json.decode(response.body);
+    if (responseData['error'] != null) {
+      throw HttpException(responseData['error']['message']);
+    }
+  } catch (error) {
+    print(error);
+  }
+}
+
+updateSavedPosts() async {
+  final url = '$headerUrl/savedPosts';
+  try {
+    final response = await http.patch(
+      Uri.parse(url),
+      headers: {
+        "X-Cassandra-Token": "$ASTRA_DB_APPLICATION_TOKEN",
+        "Content-Type": "application/json"
+      },
+      body: json.encode(
+        {'${currentUser.uid}': savedPosts},
+      ),
+    );
+    print("JSON DATA");
+    print(json.decode(response.body));
+    final responseData = json.decode(response.body);
+    if (responseData['error'] != null) {
+      throw HttpException(responseData['error']['message']);
+    }
+  } catch (error) {
+    print(error);
+  }
 }
 
 updateComments([int tryAgain = 0, bool additionSuccessful = true]) async {

@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:incampusdiary/activity_feed/news_feed.dart';
+import 'package:incampusdiary/activity_feed/news_feed_astra.dart';
 import 'package:incampusdiary/activity_feed/view_post.dart';
 import 'package:incampusdiary/models/news_feed/post_model.dart';
 

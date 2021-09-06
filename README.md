@@ -4,7 +4,8 @@ It is a social media app specially made for college students.
 This app will connect multiple campuses, acting like a social media community solely for students.
 
 College students will find everything related to their college life on this app. It will provide a platform to those who has some talent, but are hesitant to express it freely on other public platforms.
-They can do so here and gain some confidence by showcasing it to their own collegemates, and then take it to bigger stages.
+
+They can do so here and gain some confidence by showcasing it to their own collegemates, and then take it to bigger stages. Features for viewer to either like/dislike the posts allowing creator to gain popularity with less number of viewers.
 
 With random articles, their knowledge about current technologies, and other scientific advancements are automatically up-to-date. They can also learn about those technologies, if interested.
 
